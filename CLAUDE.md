@@ -42,6 +42,27 @@ Use `study_filter` parameter to target a specific indicator by name substring (e
 - `chart_set_visible_range` → zoom to exact date range (unix timestamps)
 
 ### "Work on Pine Script"
+
+Before writing code, consult the local reference in `refs/` instead of recalling v6
+syntax from memory — see [refs/README.md](refs/README.md) for the map:
+
+- `refs/pine-v6-docs/reference/functions/` — 458 functions split by namespace: `ta.md` (59), `strategy.md` (48), `collections.md` (115), `drawing.md` (123), `general.md` (102), `request.md` (11)
+- `refs/pine-v6-docs/reference/variables.md` (161) — built-ins like `close`, `bar_index`, `barstate.*`, `strategy.position_size`, `ta.obv`
+- `refs/pine-v6-docs/reference/constants.md` (239) — `color.red`, `shape.triangle`, `strategy.long`
+- `refs/pine-v6-docs/concepts/common_errors.md` — compile errors
+- `refs/pine-v6-docs/concepts/execution_model.md` — `var`/`varip`, repainting, bar-by-bar
+- `refs/pine-v6-docs/pinescriptv6_complete_reference.md` — all 884 entries in one file, grep this when unsure which file holds a symbol
+- `refs/INDICATOR-INDEX.md` — 210 existing indicator implementations; check here before writing one from scratch
+
+`functions/` holds only functions (names ending in `()`). Constants and read-only
+variables live in `constants.md` and `variables.md` — so `ta.vwap()` is in `ta.md` while
+the `ta.vwap` variable is in `variables.md`.
+
+Only 14 of those 210 indicators are v6. The rest are v3/v4 and need converting before
+they compile — treat them as formula references, not paste-ready code.
+
+Then run the loop:
+
 1. `pine_set_source` → inject code into editor
 2. `pine_smart_compile` → compile with auto-detection + error check
 3. `pine_get_errors` → read compilation errors
@@ -127,3 +148,25 @@ Claude Code ←→ MCP Server (stdio) ←→ CDP (localhost:9222) ←→ Trading
 ```
 
 Pine graphics path: `study._graphics._primitivesCollection.dwglines.get('lines').get(false)._primitivesDataById`
+
+## Local Pine Reference (`refs/`)
+
+Three third-party repos installed locally as reference material. Not committed —
+licenses differ from this project's MIT. Build with
+`powershell -ExecutionPolicy Bypass -File tools/fetch-refs.ps1`; full guide in
+[refs/README.md](refs/README.md).
+
+| Folder | Source | License | Use for |
+|---|---|---|---|
+| `refs/pine-v6-docs/` | codenamedevan/pinescriptv6 | none stated | Pine v6 syntax, the primary reference when writing code |
+| `refs/indicators-everget/` | everget/tradingview-pinescript-indicators | GPL-3.0 | 210 existing indicator implementations |
+| `refs/awesome-pinescript/` | pAulseperformance/awesome-pinescript | MIT | third-party libraries, tools, articles |
+
+The v6 docs repo ships broken upstream: four function reference files are empty (1 byte),
+`request.md` is missing four functions, and `variables.md` is truncated — it lacks
+`close` and `bar_index`. The scripts in `tools/` repair all of that on fetch by merging
+the upstream files with the 884-entry single-file reference, so the local copy is more
+complete than the original. Details in `refs/README.md`.
+
+Since `refs/indicators-everget/` is GPL-3.0, code copied from it into a published script
+carries attribution and copyleft obligations.
