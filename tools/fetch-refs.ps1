@@ -7,7 +7,7 @@
 #
 #   powershell -ExecutionPolicy Bypass -File tools/fetch-refs.ps1
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview',
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview',
     [switch]$SkipLinkCheck
 )
 

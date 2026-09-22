@@ -3,7 +3,7 @@
 #  - menandai link mati langsung di README.md (aslinya disimpan sbg README.original.md)
 # Jalankan ulang kapan saja untuk cek ulang: link komersial cepat usang.
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview',
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview',
     [int]$TimeoutSec = 15
 )
 

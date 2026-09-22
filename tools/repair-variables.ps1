@@ -2,7 +2,7 @@
 # Repo asal codenamedevan/pinescriptv6 kehilangan 26 entri pertama secara alfabetis
 # (ask s/d dividends.future_amount), termasuk `close` dan `bar_index`.
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview'
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview'
 )
 
 $ErrorActionPreference = 'Stop'

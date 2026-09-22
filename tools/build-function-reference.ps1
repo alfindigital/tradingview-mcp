@@ -15,7 +15,7 @@
 # color.red atau strategy.position_size sudah punya rumah di constants.md dan
 # variables.md, jadi tidak diduplikasi ke sini.
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview'
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview'
 )
 
 $ErrorActionPreference = 'Stop'

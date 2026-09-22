@@ -6,7 +6,7 @@
 #    yang sama dgn concepts/execution_model.md (121 KB, lebih rapi).
 # File yang dibuang dipindah ke _duplicates/ supaya tidak hilang, bukan dihapus.
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview'
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview'
 )
 
 $ErrorActionPreference = 'Stop'

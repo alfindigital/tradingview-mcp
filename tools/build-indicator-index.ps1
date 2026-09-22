@@ -2,7 +2,7 @@
 # nama file, versi Pine, judul study/indicator, dan status siap-pakai.
 # Output: refs/INDICATOR-INDEX.md
 param(
-    [string]$Root = 'C:\Users\alfin\Documents\Tradingview'
+    [string]$Root = 'C:\Users\alfin\Documents\IDX\Tradingview'
 )
 
 $ErrorActionPreference = 'Stop'
